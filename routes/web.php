@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
@@ -68,25 +67,17 @@ Route::any('fail', [CheckoutController::class, 'fail']);
 Route::any('cancel', [CheckoutController::class, 'cancel']);
 //SSLCOMMERZ END
 
-// Test Mail------------------
-Route::get('mymail', function(){
-    // $subject = "Order Approval Mail";
-    // Mail::to('noyon7824@gmail.com')->send(new OrderApprovalMail($subject));
-    // return view('order_approval_mail');
-    return view('order_confirmation_mail');
-});
-
-// Admin Panel----------------
-Route::middleware(['admin'])->group(function () {
+// Admin Panel----------------------------
+Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/admin/logout', [DashboardController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [DashboardController::class, 'logout'])->name('admin.logout');
 
 
     Route::get('contact/info', [DashboardController::class, 'contact'])->name('contact.info');
     Route::get('contact/show/{id}', [DashboardController::class, 'contactShow'])->name('contact.show');
     Route::get('contact/change/status/{id}', [DashboardController::class, 'changeStatus'])->name('contact.change.status');
 
-    // Slider Routes-------
+    // Slider Routes----------------------
     Route::get('slider', [SliderController::class, 'index'])->name('slider');
     Route::get('slider/create', [SliderController::class, 'create'])->name('slider.create');
     Route::post('slider/switch{id}', [SliderController::class, 'switch'])->name('slider.switch');
@@ -95,7 +86,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
     Route::delete('slider/destroy/{id}', [SliderController::class, 'destroy'])->name('slider.destroy');
 
-    // Category Routes-------------
+    // Category Routes-------------------
     Route::get('category', [CategoryController::class, 'index'])->name('category');
     Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
@@ -103,7 +94,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-    // Subcategory Routes-------
+    // Subcategory Routes----------------
     Route::get('subcategory', [SubCategoyController::class, 'index'])->name('subcategory');
     Route::get('subcategory/create', [SubCategoyController::class, 'create'])->name('subcategory.create');
     Route::post('subcategory/store', [SubCategoyController::class, 'store'])->name('subcategory.store');
@@ -111,7 +102,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('subcategory/update/{id}', [SubCategoyController::class, 'update'])->name('subcategory.update');
     Route::delete('subcategory/destroy/{id}', [SubCategoyController::class, 'destroy'])->name('subcategory.destroy');
 
-    // Brand Routes-------------
+    // Brand Routes----------------------
     Route::get('brand', [BrandController::class, 'index'])->name('brand');
     Route::get('brand/create', [BrandController::class, 'create'])->name('brand.create');
     Route::post('brand/store', [BrandController::class, 'store'])->name('brand.store');
@@ -119,7 +110,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('brand/update/{id}', [BrandController::class, 'update'])->name('brand.update');
     Route::delete('brand/destroy/{id}', [BrandController::class, 'destroy'])->name('brand.destroy');
 
-    // Product Routes-------------
+    // Product Routes--------------------
     Route::get('product', [AdminProductController::class, 'index'])->name('product');
     Route::get('product/create', [AdminProductController::class, 'create'])->name('product.create');
     Route::post('product/store', [AdminProductController::class, 'store'])->name('product.store');
@@ -127,14 +118,12 @@ Route::middleware(['admin'])->group(function () {
     Route::put('product/update/{id}', [AdminProductController::class, 'update'])->name('product.update');
     Route::delete('product/destroy/{id}', [AdminProductController::class, 'destroy'])->name('product.destroy');
 
-    // Order Routes-------------
-    // Route::prefix('order')->group(function () {
-    // Route::get('/pending', [OrderController::class, 'pending'])->name('order.pending');
-    // Route::get('/details', [OrderController::class, 'show'])->name('order.details');
-    // Route::get('/approve', [OrderController::class, 'approval'])->name('order.approve');
-    // });
+    // Order Routes----------------------
+    Route::get('order/pending', [OrderController::class, 'pending'])->name('admin.order.pending');
+    Route::get('order/details/{id}', [OrderController::class, 'show'])->name('admin.order.details');
+    Route::get('order/approve/{id}', [OrderController::class, 'approval'])->name('admin.order.approve');
 
-    // System Routes--------------
+    // System Routes---------------------
     Route::get('system/aboutus', [SystemController::class, 'about'])->name('system.aboutus');
     Route::put('system/aboutus/update/{id}', [SystemController::class, 'update'])->name('system.aboutus.update');
 
