@@ -57,6 +57,16 @@
                 </a>
             </li>
 
+            <!-- Admin Area -->
+            <li class="sidebar-menu-group-title">Order Area</li>
+            <li>
+                <?php $contact_data = \App\Models\Checkout::where('status', 0)->count();?>
+                <a href="{{route('admin.order.pending')}}">
+                    <iconify-icon icon="basil:stack-outline" class="menu-icon"></iconify-icon>
+                    <span>Orders <span class="badge bg-dark text-white radius-5 text-xs">{!! $contact_data >= 1? $contact_data:'0' !!}</span></span>
+                </a>
+            </li>
+
             <!-- System Area -->
             <li class="sidebar-menu-group-title">System Area</li>
             <li>
@@ -69,16 +79,6 @@
                 <a href="{{route('system.site.settings')}}">
                     <iconify-icon icon="basil:stack-outline" class="menu-icon"></iconify-icon>
                     <span>Site Settings</span>
-                </a>
-            </li>
-
-            <!-- Admin Area -->
-            <li class="sidebar-menu-group-title">Order Area</li>
-            <li>
-                <?php $contact_data = \App\Models\Checkout::where('status', 0)->count();?>
-                <a href="">
-                    <iconify-icon icon="basil:stack-outline" class="menu-icon"></iconify-icon>
-                    <span>Pending Orders <span class="badge bg-dark text-white radius-5 text-xs">{!! $contact_data >= 1? $contact_data:'0' !!}</span></span>
                 </a>
             </li>
 
