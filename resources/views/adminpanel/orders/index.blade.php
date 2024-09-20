@@ -66,7 +66,7 @@
                                 </td>
                                 @if($checkout->status == 0)
                                 <td>
-                                    <a href="{!! route('admin.order.approve', $checkout->id) !!}" class="text-center btn btn-success text-white" onclick="return confirm('Are you sure !!')"><iconify-icon icon="fluent:approvals-app-28-regular"></iconify-icon></a>
+                                    <a href="{!! route('admin.order.approve', $checkout->id) !!}" class="text-center btn btn-success text-white" title="approve" onclick="return confirm('Are you sure !!')"><iconify-icon icon="fluent:approvals-app-28-regular"></iconify-icon></a>
                                 </td>
                                 @endif
                             </tr>

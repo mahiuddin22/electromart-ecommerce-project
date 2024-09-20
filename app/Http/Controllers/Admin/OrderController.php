@@ -40,8 +40,10 @@ class OrderController extends Controller
         $user = User::where('id', $checkout->user_id)->first();
         $checkout->status = 1;
         $checkout->save();
+
         $subject = "Order Successfully Confimed";
         Mail::to($user->email)->send(new OrderApprovalMail($subject));
+        
         return redirect()->route('admin.order.pending')->with('message', 'Order Approved successfully');
     }
 } 

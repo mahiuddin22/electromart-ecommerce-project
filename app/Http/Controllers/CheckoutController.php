@@ -7,6 +7,7 @@ use App\Models\Checkout;
 use App\Models\OrderHistory;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Mail\AdminMail;
 use App\Mail\OrderConfirmationMail;
 use App\Models\Product;
 use App\Models\User;
@@ -118,7 +119,9 @@ class CheckoutController extends Controller
 
         
         $checkout  = Checkout::where('user_id', $user->id)->where('id', $checkout->id)->first();
+        
         Mail::to($user->email)->send(new OrderConfirmationMail($checkout));
+        Mail::to('mahiuddin.noyon@gmail.com')->send(new AdminMail($checkout));
         
         $old_cart = Cart::where('user_id', $user->id);
         $old_cart->delete();

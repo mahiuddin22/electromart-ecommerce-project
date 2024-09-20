@@ -187,14 +187,13 @@
         </div>
 
         <div class="email-body">
-            <h4>Thank you for your order!</h4>
-            <p>Your order has been confirmed. Here are the details:</p>
+            <h4>New Order!</h4>
 
             <!-- Printable area (Order Table and Customer Info) -->
             <div id="printable-area">
                 <!-- Full-width background for logo -->
                 <div class="logo-background">
-                    <!-- Logo Title -->
+                    <!-- Logo Image -->
                     Electromart
                 </div>
 
@@ -217,6 +216,7 @@
                         <tr>
                             <th>SL</th>
                             <th>Product</th>
+                            <th>Item</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Total</th>
@@ -244,12 +244,13 @@
                 </table>
             </div>
 
-            <a href="{!! route('order.details', $checkout->id) !!}" class="btn btn-confirm text-white">View Order</a>
+            <a href="{!! route('admin.order.details', $checkout->id) !!}" class="btn btn-primary text-white">View Order</a>
+            <a href="{!! route('admin.order.approve', $checkout->id) !!}" class="text-center btn btn-success text-white">One Click Approve</a>
             <!-- Print Button with Font Awesome Icon -->
         </div>
 
         <div class="email-footer">
-            <p>If you have any questions, feel free to contact our support team.</p>
+            <p>Auto generated mail by electromart comunity.</p>
         </div>
     </div>
 

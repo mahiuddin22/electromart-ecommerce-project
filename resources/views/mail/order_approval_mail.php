@@ -65,7 +65,7 @@
     </div>
     <div class="email-body">
       <p>Great news! Your order has been approved.</p>
-      <a href="#" class="btn btn-approve">View Order</a>
+      <a href="{!! route('order.details', $checkout->id) !!}" class="btn btn-primary text-white">View Order</a>
     </div>
     <div class="email-footer">
       <p>If you have any questions, feel free to contact our support team.</p>
