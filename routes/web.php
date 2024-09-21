@@ -72,7 +72,6 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('admin.logout');
 
-
     Route::get('contact/info', [DashboardController::class, 'contact'])->name('contact.info');
     Route::get('contact/show/{id}', [DashboardController::class, 'contactShow'])->name('contact.show');
     Route::get('contact/change/status/{id}', [DashboardController::class, 'changeStatus'])->name('contact.change.status');

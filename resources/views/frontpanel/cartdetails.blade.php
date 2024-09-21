@@ -44,12 +44,14 @@
                                         @csrf
                                         @method('PUT')
                                         <div style="display: flex;">
+                                            <div class="" style="border: 1px solid #ccc; border-radius:18px; width:125px; padding:0 5px;">
+                                                <button type="button" onclick="increment()" style="border: none;">+</button>
+                                                <input type="number" name="product_quantity" id="quantity" min="1" readonly @if($product->quantity < 10) max="{{$product->quantity}}" @else max="10" @endif value="{!! $cart->product_quantity !!}" style="border:1px solid #ccc; padding-left: 15px; padding-right: 15px; width: 65px;" />
+                                                <button type="button" onclick="decrement()" style="border: none; ">-</button>
+                                            </div>
 
-                                            <button type="button" onclick="increment()" style="width:25px; border: 1px solid #ccc; border-radius:18px;">+</button>
-                                            <input type="number" name="product_quantity" id="quantity" onchange="myfunction()" min="1" readonly @if($product->quantity < 10) max="{{$product->quantity}}" @else max="10" @endif value="{!! $cart->product_quantity !!}" style="border:1px solid #ccc; border-radius: 18px; padding-left: 15px; padding-right: 15px; width: 65px;">
-                                            <button type="button" onclick="decrement()" style="width:25px; border: 1px solid #ccc; border-radius:18px;">-</button>
 
-                                            <button class="btn btn-primary d-flex" title="Update" type="submit" style="padding: 10px; margin-left:5px;"><i class="fa fa-check"></i></button>
+                                            <button class="btn btn-primary d-flex" title="Update" type="submit" style="padding: 7px; margin-left:5px;"><i class="fa fa-check"></i></button>
                                         </div>
                                     </form>
                                 </td>
@@ -169,21 +171,5 @@
         }
     }
 </script>
-<script>
-    function increment() {
-        document.getElementById("quantity").stepUp();
-    }
-
-    function decrement() {
-        document.getElementById("quantity").stepDown();
-    }
-</script>
-<script>
-    function myfunction() {
-        var data = document.getElementById('quantity').value;
-        if (data >= 10) {
-            alert("you can addd maximum 10 item");
-        }
-    }
-</script>
+<script src="{{url('public/front/assets/js/script.js')}}"></script>
 @endpush

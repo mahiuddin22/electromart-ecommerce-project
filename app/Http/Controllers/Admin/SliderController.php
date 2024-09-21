@@ -42,6 +42,8 @@ class SliderController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string',
+            'product_id' => 'required',
+            'status' => 'required',
             'image' => 'required',
         ]);
 
@@ -106,6 +108,8 @@ class SliderController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string',
+            'product_id' => 'required',
+            'status' => 'required',
         ]);
 
         $slider = Slider::findOrFail($id);

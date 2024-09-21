@@ -25,6 +25,7 @@ class BrandController extends Controller
 
         $this->validate($request, [
             'name' => 'required|string',
+            'status' => 'required|string',
             'image' => 'required',
         ]);
 
@@ -64,6 +65,7 @@ class BrandController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string',
+            'status' => 'required',
         ]);
 
         $brand = Brand::findOrFail($id);
