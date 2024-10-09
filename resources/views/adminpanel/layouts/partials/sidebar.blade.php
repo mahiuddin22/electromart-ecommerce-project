@@ -91,6 +91,13 @@
                     <span>Contact Info <span class="badge bg-dark text-white radius-5 text-xs">{!! $contact_data >= 1? $contact_data:'0' !!}</span></span>
                 </a>
             </li>
+            <li>
+                <?php $user_data = \App\Models\User::count();?>
+                <a href="{{route('user.info')}}">
+                    <iconify-icon icon="basil:stack-outline" class="menu-icon"></iconify-icon>
+                    <span>User Info <span class="badge bg-dark text-white radius-5 text-xs">{!! $user_data >= 1? $user_data:'0' !!}</span></span>
+                </a>
+            </li>
 
         </ul>
     </div>
