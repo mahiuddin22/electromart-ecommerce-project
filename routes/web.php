@@ -77,6 +77,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('contact/show/{id}', [DashboardController::class, 'contactShow'])->name('contact.show');
     Route::get('contact/change/status/{id}', [DashboardController::class, 'changeStatus'])->name('contact.change.status');
 
+    Route::get('user/info', [DashboardController::class, 'userInfo'])->name('user.info');
     // Slider Routes----------------------
     Route::get('slider', [SliderController::class, 'index'])->name('slider');
     Route::get('slider/create', [SliderController::class, 'create'])->name('slider.create');
