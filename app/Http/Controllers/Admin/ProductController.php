@@ -87,6 +87,12 @@ class ProductController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'brand_id' => 'required',
+            'short_des' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
         ]);
 
         $product = Product::findOrFail($id);

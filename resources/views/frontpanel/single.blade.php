@@ -67,16 +67,18 @@
                             @csrf
                             <div class="quantity-colors">
 
-                                <div class="quantity">
-                                    <h5>Quantity</h5>
-                                    <div class="pro-qty"><input type="text" name="quantity" value="1"></div>
+                                <h5><strong>Quantity</strong></h5>
+                                <div style="border: 1px solid #ccc; border-radius:18px; width:125px; padding:0 5px;">
+                                    <button type="button" onclick="increment()" style="border: none;">+</button>
+                                    <input type="number" name="quantity" id="quantity" value="1" min="1" readonly @if($product->quantity < 10) max="{{$product->quantity}}" @else max="10" @endif style=" border: 1px solid #ccc; padding-left: 15px; padding-right: 15px; width: 65px;" />
+                                    <button type="button" onclick="decrement()" style="border: none; ">-</button>
                                 </div>
 
                             </div>
 
                             @if($product->quantity > 0)
                             <div class="actions">
-                                <button class="btn btn-warning"><i class="ti-shopping-cart"></i><span> ADD TO CART</span></button>
+                                <button class="btn btn-warning" type="submit"><i class="ti-shopping-cart"></i><span> ADD TO CART</span></button>
                             </div>
                             @else
                             <h4 class="text-danger btn btn-outline-secondary d-block">Out of Stock</h4>
@@ -296,4 +298,5 @@
 @endsection
 
 @push('js')
+<script src="{{url('public/front/assets/js/script.js')}}"></script>
 @endpush
